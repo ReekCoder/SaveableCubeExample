@@ -111,11 +111,10 @@ namespace SaveCubeExample
             cubePaintInfo.mesh.material.color = cubeColor;
 
             //Here To Stop Errors
-            GameObject dumbCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            dumbCube.transform.parent = cubeVariable.transform;
-            dumbCube.transform.localPosition = Vector3.zero;
-            dumbCube.transform.localScale = Vector3.zero;
-            GameObject[] storedArray = { dumbCube };
+            GameObject dumbObject = new GameObject();
+            dumbObject.transform.parent = toolObject.transform;
+            dumbObject.transform.localPosition = Vector3.zero;
+            GameObject[] storedArray = { dumbObject };
             Traverse.Create(cubeInteractable).Field("ToDisableWhenGrab").SetValue(storedArray);
             cubeInteractable.meshRenderer = cubeVariable.GetComponent<MeshRenderer>();
 
